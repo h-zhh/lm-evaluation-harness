@@ -1,0 +1,19 @@
+group: 
+  - finben
+  - finben_mc
+task: finben_fin_gpt_senti
+dataset_path: TheFinAI/en-fin_gpt_senti
+output_type: multiple_choice
+training_split: train
+validation_split: valid
+test_split: test
+doc_to_text: query
+doc_to_target: '["strong negative", "moderately negative", "mildly negative", "neutral", "mildly positive", "moderately positive", "strong positive"].index(answer)'
+doc_to_choice: ["strong negative", "moderately negative", "mildly negative", "neutral", "mildly positive", "moderately positive", "strong positive"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true

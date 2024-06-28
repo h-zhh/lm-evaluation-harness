@@ -1,0 +1,17 @@
+group: 
+  - finben
+  - finben_mc
+task: finben_tsa
+dataset_path: TheFinAI/flare-tsa
+output_type: multiple_choice
+test_split: test
+doc_to_text: query
+doc_to_target: !function utils.tsa_score_to_index
+doc_to_choice: ["negative", "neutral", "positive"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true

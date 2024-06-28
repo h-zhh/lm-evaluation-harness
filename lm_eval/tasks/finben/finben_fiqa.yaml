@@ -1,0 +1,19 @@
+group: 
+  - finben
+  - finben_mc
+task: finben_fiqa
+dataset_path: TheFinAI/fiqa-sentiment-classification
+output_type: multiple_choice
+training_split: train
+validation_split: valid
+test_split: test
+doc_to_text: "What is the sentiment of the following financial {{type}}? Provide your answer as either negative, positive or neutral. Post: {{sentence}} Answer:"
+doc_to_target: !function utils.fiqa_score_to_index
+doc_to_choice: ["negative", "neutral", "positive"]
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
